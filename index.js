@@ -2,55 +2,59 @@ const productsUrl = "https://fakestoreapi.com/products";
 
 const displayAll = document.querySelector(".display-all");
 const displaySingle = document.querySelector(".display-single");
+const loader = document.querySelector(".lds-ellipsis");
 const body = document.querySelector("body");
 
 function getAllProducts(productUrl) {
-  return fetch(productUrl)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => {
-      body.innerHTML = "<h1>Error:Check Your Internet Connection</h1>";
-      console.error(err);
-    });
+  return new Promise((resolve, reject) => {
+    fetch(productUrl)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        console.error("Error in fetching products", err);
+        reject(err);
+      });
+  });
 }
 
 function displayAllProducts() {
   let newDiv = document.createElement("div");
   newDiv.setAttribute("class", "products");
+
+  loader.style.display = "inline-block";
+
   getAllProducts(productsUrl)
     .then((products) => {
       products.forEach((product) => {
         let image = document.createElement("img");
-        let productName = document.createElement("p");
-        let productPrice = document.createElement("p");
-        let productDiv = document.createElement("div");
-        let productImageDis = document.createElement("div");
-
-        productDiv.setAttribute("class", "each-product");
-        productImageDis.setAttribute("class", "productImageDis");
-
-        productName.innerText = product.title;
-        productPrice.innerText = `$ ${product.price}`;
-
         image.setAttribute("class", "product-images");
         image.setAttribute("src", `${product.image}`);
         image.setAttribute("alt", "product-image");
         image.setAttribute("id", `${product.id}`);
 
+        let productName = document.createElement("p");
         productName.setAttribute("class", "product-names");
-        productPrice.setAttribute("class", "product-price");
+        productName.innerText = product.title;
 
-        productDiv.appendChild(image);
+        let productPrice = document.createElement("p");
+        productPrice.setAttribute("class", "product-price");
+        productPrice.innerText = `$ ${product.price}`;
+
+        let productImageDis = document.createElement("div");
+        productImageDis.setAttribute("class", "productImageDis");
         productImageDis.appendChild(productName);
         productImageDis.appendChild(productPrice);
+
+        let productDiv = document.createElement("div");
+        productDiv.setAttribute("class", "each-product");
+        productDiv.appendChild(image);
         productDiv.appendChild(productImageDis);
 
         newDiv.appendChild(productDiv);
-        console.log(newDiv);
       });
     })
     .then(() => {
@@ -59,57 +63,54 @@ function displayAllProducts() {
     })
     .catch((err) => {
       console.error("Cannot display Products", err);
-      body.innerHTML = "<h1>Internal Error:Cannot display Products</h1>";
+      let error = document.createElement("h1");
+      error.innerText = "Internal Error:Cannot display Products";
+      displayAll.appendChild(error);
     });
 }
 displayAllProducts();
 
+//For Single Image Display
+
 displayAll.addEventListener("click", displaySingleProduct);
 
 function displaySingleProduct(event) {
-  console.log(event.target.classList[0]);
   if (event.target.classList[0] === "product-images") {
     getAllProducts(productsUrl + `/${event.target.id}`)
       .then((productInfo) => {
-        console.log(productInfo);
-
         displayAll.style.display = "none";
+        loader.style.display = "none";
 
         let singleImage = document.createElement("div");
-        let productName = document.createElement("p");
-        let productPrice = document.createElement("p");
-        let productImg = document.createElement("img");
-        let productDiscription = document.createElement("p");
-        let productRating = document.createElement("p");
-        let productCategory = document.createElement("p");
-        let backButton = document.createElement("button");
-
         singleImage.setAttribute("class", "single-product");
-        productName.setAttribute("class", "single-product-name");
 
+        let productName = document.createElement("p");
+        productName.setAttribute("class", "single-product-name");
         productName.innerText = productInfo.title;
 
+        let productPrice = document.createElement("p");
         productPrice.setAttribute("class", "single-product-price");
-
         productPrice.innerText = `$ ${productInfo.price}`;
 
+        let productImg = document.createElement("img");
         productImg.setAttribute("class", "single-product-img");
         productImg.setAttribute("src", `${productInfo.image}`);
         productImg.setAttribute("alt", `product-image`);
 
+        let productDiscription = document.createElement("p");
         productDiscription.setAttribute("class", "single-product-discription");
         productDiscription.innerText = productInfo.description;
 
+        let productRating = document.createElement("p");
         productRating.setAttribute("class", "single-product-rating");
-        console.log("Rating", productInfo.rating);
-        productRating.innerHTML = `Rating: ${productInfo.rating.rate} / 5`;
+        productRating.innerText = `Rating: ${productInfo.rating.rate} / 5`;
 
+        let productCategory = document.createElement("p");
         productCategory.setAttribute("class", "single-product-category");
-        productCategory.innerHTML = `Category:${productInfo.category}`;
+        productCategory.innerText = `Category:${productInfo.category}`;
 
+        let backButton = document.createElement("button");
         backButton.innerText = "Back";
-
-        singleImage.appendChild(productImg);
 
         let singleImageInfo = document.createElement("div");
         singleImageInfo.setAttribute("class", "single-image-info");
@@ -120,26 +121,29 @@ function displaySingleProduct(event) {
         singleImageInfo.appendChild(productRating);
         singleImageInfo.appendChild(productCategory);
         singleImageInfo.appendChild(backButton);
+
+        singleImage.appendChild(productImg);
         singleImage.appendChild(singleImageInfo);
 
-        console.log(singleImage);
         displaySingle.innerHTML = "";
         displaySingle.appendChild(singleImage);
         displaySingle.style.display = "block";
       })
       .catch((err) => {
-        body.innerHTML = "<h1>Internal Error:`Error in getting  details`</h1>";
-        console.error(`Error in getting ${e.target.id} details`);
+        let error = document.createElement("h1");
+        error.innerText = "Internal Error:Cannot display Product";
+        displayAll.appendChild(error);
+        console.error(`Error in getting ${event.target.id} details`, err);
       });
   } else {
     displayAll.style.display = "block";
   }
 }
 
-let button = addEventListener("click", goTOHomePage);
+//Back to home page
+let button = addEventListener("click", goToHomePage);
 
-function goTOHomePage(event) {
-  console.log(event.target);
+function goToHomePage(event) {
   displaySingle.style.display = "none";
   displayAll.style.display = "block";
 }
