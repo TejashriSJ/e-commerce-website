@@ -72,7 +72,7 @@ function displaySingleProduct(event) {
     getAllProducts(productsUrl + `/${event.target.id}`)
       .then((productInfo) => {
         console.log(productInfo);
-        //let images = document.querySelector(".products");
+
         displayAll.style.display = "none";
 
         let singleImage = document.createElement("div");
@@ -99,9 +99,10 @@ function displaySingleProduct(event) {
         productDiscription.setAttribute("class", "single-product-discription");
         productDiscription.innerText = productInfo.description;
 
-        //productRating.setAttribute("class", "single-product-rating");
+        productRating.setAttribute("class", "single-product-rating");
+        console.log("Rating", productInfo.rating);
+        productRating.innerHTML = `Rating: ${productInfo.rating.rate} / 5`;
 
-        //productRating.innerText = productInfo.rating;
         backButton.innerText = "Back";
 
         singleImage.appendChild(productImg);
@@ -112,13 +113,10 @@ function displaySingleProduct(event) {
         singleImageInfo.appendChild(productName);
         singleImageInfo.appendChild(productPrice);
         singleImageInfo.appendChild(productDiscription);
+        singleImageInfo.appendChild(productRating);
         singleImageInfo.appendChild(backButton);
-        //singleImageInfo.appendChild(productRating);
-
         singleImage.appendChild(singleImageInfo);
-        //singleImage.setAttribute("class", "singleImage");
-        //singleImage.appendChild();
-        //singleImage.style.display = "block";
+
         console.log(singleImage);
         displaySingle.innerHTML = "";
         displaySingle.appendChild(singleImage);
