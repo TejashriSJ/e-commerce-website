@@ -81,6 +81,7 @@ function displaySingleProduct(event) {
         let productImg = document.createElement("img");
         let productDiscription = document.createElement("p");
         let productRating = document.createElement("p");
+        let productCategory = document.createElement("p");
         let backButton = document.createElement("button");
 
         singleImage.setAttribute("class", "single-product");
@@ -103,6 +104,9 @@ function displaySingleProduct(event) {
         console.log("Rating", productInfo.rating);
         productRating.innerHTML = `Rating: ${productInfo.rating.rate} / 5`;
 
+        productCategory.setAttribute("class", "single-product-category");
+        productCategory.innerHTML = `Category:${productInfo.category}`;
+
         backButton.innerText = "Back";
 
         singleImage.appendChild(productImg);
@@ -114,6 +118,7 @@ function displaySingleProduct(event) {
         singleImageInfo.appendChild(productPrice);
         singleImageInfo.appendChild(productDiscription);
         singleImageInfo.appendChild(productRating);
+        singleImageInfo.appendChild(productCategory);
         singleImageInfo.appendChild(backButton);
         singleImage.appendChild(singleImageInfo);
 
