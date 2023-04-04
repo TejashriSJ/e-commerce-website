@@ -180,6 +180,10 @@ footer ul li h2 {
   .single-product-name {
     font-size: 2em;
   }
+  .single-product-category {
+    font-size: 1em;
+    font-weight: bold;
+  }
   .single-product button {
     font-size: 1.5em;
     width: 50vw;
