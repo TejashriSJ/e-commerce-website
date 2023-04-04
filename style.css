@@ -96,7 +96,7 @@ body {
 .single-product-rating {
   font-size: 2em;
 }
-.single-product button {
+.single-product-button {
   font-size: 1em;
   color: white;
   font-weight: bold;
@@ -216,7 +216,7 @@ footer ul li h2 {
     font-size: 1em;
     font-weight: bold;
   }
-  .single-product button {
+  .single-product-button {
     font-size: 1.5em;
     width: 50vw;
     padding: 1vh;
