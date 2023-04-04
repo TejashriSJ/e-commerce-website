@@ -29,6 +29,8 @@ function displayAllProducts() {
 
   getAllProducts(productsUrl)
     .then((products) => {
+      loader.style.display = "none";
+
       products.forEach((product) => {
         let image = document.createElement("img");
         image.setAttribute("class", "product-images");
@@ -110,6 +112,7 @@ function displaySingleProduct(event) {
         productCategory.innerText = `Category:${productInfo.category}`;
 
         let backButton = document.createElement("button");
+        backButton.setAttribute("class", "single-product-button");
         backButton.innerText = "Back";
 
         let singleImageInfo = document.createElement("div");
@@ -129,6 +132,11 @@ function displaySingleProduct(event) {
         displaySingle.appendChild(singleImage);
         displaySingle.style.display = "block";
       })
+      .then(() => {
+        let button = document.querySelector(".single-product-button");
+        console.log(button);
+        button.addEventListener("click", goToHomePage);
+      })
       .catch((err) => {
         let error = document.createElement("h1");
         error.innerText = "Internal Error:Cannot display Product";
@@ -140,9 +148,7 @@ function displaySingleProduct(event) {
   }
 }
 
-//Back to home page
-let button = addEventListener("click", goToHomePage);
-
+//Back to home page fuunction
 function goToHomePage(event) {
   displaySingle.style.display = "none";
   displayAll.style.display = "block";
