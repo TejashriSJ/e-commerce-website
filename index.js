@@ -30,8 +30,7 @@ function displayAllProducts() {
   getAllProducts(productsUrl)
     .then((products) => {
       loader.style.display = "none";
-
-      products.forEach((product) => {
+      let AllProductsDetails = products.map((product) => {
         let image = document.createElement("img");
         image.setAttribute("class", "product-images");
         image.setAttribute("src", `${product.image}`);
@@ -56,17 +55,21 @@ function displayAllProducts() {
         productDiv.appendChild(image);
         productDiv.appendChild(productImageDis);
 
-        newDiv.appendChild(productDiv);
+        return productDiv;
       });
+      return AllProductsDetails;
     })
-    .then(() => {
+    .then((AllProductsDetails) => {
       console.log("all-products-appended");
+      newDiv.append(...AllProductsDetails);
       displayAll.appendChild(newDiv);
     })
     .catch((err) => {
       console.error("Cannot display Products", err);
       let error = document.createElement("h1");
       error.innerText = "Internal Error:Cannot display Products";
+      displayAll.innerHTML = "";
+      loader.style.display = "none";
       displayAll.appendChild(error);
     });
 }
@@ -140,6 +143,8 @@ function displaySingleProduct(event) {
       .catch((err) => {
         let error = document.createElement("h1");
         error.innerText = "Internal Error:Cannot display Product";
+        displayAll.innerHTML = "";
+        loader.style.display = "none";
         displayAll.appendChild(error);
         console.error(`Error in getting ${event.target.id} details`, err);
       });
@@ -152,4 +157,18 @@ function displaySingleProduct(event) {
 function goToHomePage(event) {
   displaySingle.style.display = "none";
   displayAll.style.display = "block";
+}
+
+//Go to home page
+
+let home = document.querySelector("#home");
+home.addEventListener("click", goToHomePage);
+
+//Go to sign UP page
+
+let signUp = document.querySelector(".sign-up");
+signUp.addEventListener("click", goToSignUpPage);
+
+function goToSignUpPage(event) {
+  document.location.href = "signUp.html";
 }
