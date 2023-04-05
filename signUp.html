@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="signUp.css" />
+    <script
+      src="https://kit.fontawesome.com/70456f34ed.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Sign UP</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-block">
+        <i class="fa fa-house fa-xl" id="home" style="color: #f9fafa"></i>
+        <h2>STORE</h2>
+        <span>Sing In</span>
+        <span>Sign Up</span>
+        <i class="fa fa-cart-shopping fa-xl" id="cart"></i>
+      </div>
+    </header>
+    <main>
+      <section>
+        <form action="" method="post">
+          <h2>Create Account</h2>
+          <label for="first-name">First Name</label>
+          <input
+            id="first-name"
+            type="text"
+            name="first-name"
+            required
+            minlength="4"
+          />
+          <label for="last-name">Last Name</label>
+          <input id="last-name" type="text" name="last-name" required />
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" required />
+          <p>* Password must be at least 6 characters</p>
+          <label for="repeat-password">Repeat Password</label>
+
+          <input
+            id="repeat-password"
+            type="password"
+            name="repeat-password"
+            required
+          />
+          <a href="">Terms and Conditions</a>
+          <span
+            ><label for="agree-to-tos">Agree </label
+            ><input id="checkbox" type="checkbox" name="agree-to-tos"
+          /></span>
+
+          <button>Submit</button>
+          <p id="message"></p>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <ul>
+        <li><h2>About Us</h2></li>
+        <li><h2>Contact</h2></li>
+      </ul>
+    </footer>
+    <script src="signUp.js"></script>
+  </body>
+</html>
