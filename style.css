@@ -1,5 +1,6 @@
 body {
   margin: 0vw;
+  min-height: 100vh;
 }
 .header-block {
   background-color: rgb(172, 107, 107);
@@ -9,8 +10,20 @@ body {
   align-items: center;
   width: 100vw;
 }
+header span {
+  font-size: large;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}
 #cart {
   cursor: pointer;
+}
+#home {
+  cursor: pointer;
+}
+main {
+  min-height: 80vh;
 }
 
 /*All products*/
@@ -168,6 +181,7 @@ body {
   }
 }
 /* footer */
+
 footer ul {
   display: flex;
   flex-direction: row;
