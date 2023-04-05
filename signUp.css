@@ -1,0 +1,107 @@
+body {
+  margin: 0vw;
+}
+.header-block {
+  background-color: rgb(172, 107, 107);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+}
+header span {
+  font-size: large;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}
+#cart {
+  cursor: pointer;
+}
+#home {
+  cursor: pointer;
+}
+
+/*Form */
+section {
+  display: flex;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  padding: 2em;
+  padding-left: 3em;
+  padding-right: 3em;
+  border: 1px solid gray;
+  width: auto;
+  height: auto;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+form h2 {
+  font-size: large;
+  align-self: center;
+  text-decoration: underline;
+}
+form label {
+  font-weight: bold;
+}
+#first-name,
+#last-name,
+#email,
+#password,
+#repeat-password {
+  line-height: 2em;
+  margin-bottom: 1.5em;
+}
+form p {
+  font-size: 0.5em;
+  margin-top: -1.5em;
+}
+form button {
+  align-self: center;
+  margin-top: 2em;
+  padding: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(172, 107, 107);
+  padding-left: 2em;
+  padding-right: 2em;
+  cursor: pointer;
+}
+
+#message {
+  color: red;
+  font-size: 0.75em;
+  margin-top: 3em;
+  align-self: center;
+  border: 1px solid red;
+  padding: 1em;
+  box-shadow: 1em 1em 5em;
+  display: none;
+}
+/* footer */
+footer ul {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(172, 107, 107);
+  color: rgb(172, 107, 107);
+  align-items: center;
+  justify-content: space-evenly;
+}
+footer ul li h2 {
+  font-size: 1em;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500) {
+  form {
+    width: 90vw;
+  }
+}
