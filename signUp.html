@@ -31,32 +31,51 @@
             id="first-name"
             type="text"
             name="first-name"
+            placeholder="First Name"
             required
             minlength="4"
           />
           <label for="last-name">Last Name</label>
-          <input id="last-name" type="text" name="last-name" required />
+          <input
+            id="last-name"
+            type="text"
+            name="last-name"
+            placeholder="Last Name"
+            required
+          />
           <label for="email">Email</label>
-          <input id="email" type="email" name="email" required />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="example@email.com"
+            required
+          />
           <label for="password">Password</label>
-          <input id="password" type="password" name="password" required />
-          <p>* Password must be at least 6 characters</p>
-          <label for="repeat-password">Repeat Password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="New Password"
+            required
+          />
+          <label for="repeat-password">Confirm Password</label>
 
           <input
             id="repeat-password"
             type="password"
             name="repeat-password"
+            placeholder="Repeat Password"
             required
           />
           <a href="">Terms and Conditions</a>
-          <span
-            ><label for="agree-to-tos">Agree </label
-            ><input id="checkbox" type="checkbox" name="agree-to-tos"
-          /></span>
+          <div class="checkbox">
+            <input id="checkbox" type="checkbox" name="agree-to-tos" />
+            <label for="agree-to-tos">Agree to Terms & Conditions </label>
+          </div>
 
           <button>Submit</button>
-          <p id="message"></p>
+          <p id="successMessage"></p>
         </form>
       </section>
     </main>
