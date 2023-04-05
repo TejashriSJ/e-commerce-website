@@ -42,6 +42,7 @@
             name="last-name"
             placeholder="Last Name"
             required
+            minlength="4"
           />
           <label for="email">Email</label>
           <input
@@ -68,10 +69,12 @@
             placeholder="Repeat Password"
             required
           />
-          <a href="">Terms and Conditions</a>
+
           <div class="checkbox">
             <input id="checkbox" type="checkbox" name="agree-to-tos" />
-            <label for="agree-to-tos">Agree to Terms & Conditions </label>
+            <label for="agree-to-tos"
+              >Agree to <em><a href="">Terms & Conditions</a></em>
+            </label>
           </div>
 
           <button>Submit</button>
