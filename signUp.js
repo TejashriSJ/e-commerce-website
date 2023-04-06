@@ -70,9 +70,37 @@ form.addEventListener("submit", (event) => {
     message.style.display = "block";
   } else {
     let successMessage = document.querySelector("#successMessage");
+    let signUpDetails = {
+      name: firstName.value + " " + lastName.value,
+    };
+    let beforeLogin = document.querySelector(".before-login");
+    //let signUp = document.querySelector(".sign-up");
+    console.log("before login", beforeLogin);
+
+    localStorage.setItem("signUpDetails", JSON.stringify(signUpDetails));
+    let userDetails = JSON.parse(localStorage.getItem("signUpDetails")).name;
+    console.log(JSON.parse(localStorage.getItem("signUpDetails")).name);
 
     form.reset();
+
+    let userName = document.querySelector(".user-name");
+    let afterLogin = document.querySelector(".after-login");
+
+    userName.innerText = userDetails;
+
+    beforeLogin.style.display = "none";
+    afterLogin.style.display = "block";
+
     successMessage.innerText = "Registered Successfully!";
     successMessage.style.display = "block";
   }
+});
+
+// log out
+
+let logOut = document.querySelector(".log-out");
+
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("signUpDetails");
+  location.reload();
 });
