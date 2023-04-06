@@ -159,8 +159,6 @@ function goToHomePage(event) {
   displayAll.style.display = "block";
 }
 
-//Go to home page
-
 let home = document.querySelector("#home");
 home.addEventListener("click", goToHomePage);
 
@@ -172,3 +170,27 @@ signUp.addEventListener("click", goToSignUpPage);
 function goToSignUpPage(event) {
   document.location.href = "signUp.html";
 }
+
+//Check if Sign in or not
+let afterLogIn = document.querySelector(".after-login");
+let beforeLogin = document.querySelector(".before-login");
+let userName = document.querySelector(".user-name");
+let logedInUser = JSON.parse(localStorage.getItem("signUpDetails"));
+
+if (logedInUser !== null) {
+  beforeLogin.style.display = "none";
+  userName.innerText = logedInUser.name;
+  afterLogIn.style.display = "block";
+} else {
+  beforeLogin.style.display = "block";
+  afterLogIn.style.display = "none";
+}
+
+// log out
+
+let logOut = document.querySelector(".log-out");
+
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("signUpDetails");
+  location.reload();
+});
