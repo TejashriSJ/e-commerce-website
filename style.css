@@ -9,6 +9,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100vw;
+  margin-bottom: 1em;
 }
 .before-login {
   display: flex;
@@ -26,6 +27,12 @@ body {
 .after-login {
   display: none;
 }
+.sign-in:hover,
+.sign-up:hover,
+.log-out:hover,
+#home:hover {
+  color: rgb(99, 27, 22);
+}
 
 #cart {
   cursor: pointer;
@@ -33,6 +40,7 @@ body {
 #home {
   cursor: pointer;
 }
+
 main {
   min-height: 80vh;
 }
@@ -200,6 +208,7 @@ footer ul {
   color: rgb(172, 107, 107);
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 0em;
 }
 footer ul li h2 {
   font-size: 2em;

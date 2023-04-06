@@ -1,5 +1,5 @@
 body {
-  margin: 0vw;
+  margin: 0em;
 }
 .header-block {
   background-color: rgb(172, 107, 107);
@@ -8,6 +8,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100vw;
+  margin-bottom: 1em;
 }
 
 .before-login {
@@ -24,6 +25,11 @@ body {
   cursor: pointer;
   list-style: none;
 }
+.sign-in:hover,
+.sign-up:hover,
+.log-out:hover {
+  color: rgb(99, 27, 22);
+}
 .after-login {
   display: none;
 }
@@ -38,6 +44,7 @@ body {
 section {
   display: flex;
   justify-content: center;
+  padding: 2em;
 }
 form {
   display: flex;
@@ -114,6 +121,10 @@ form button {
 }
 
 /* footer */
+footer {
+  width: 100vw;
+  margin-bottom: 0rem;
+}
 footer ul {
   display: flex;
   flex-direction: row;
@@ -121,6 +132,7 @@ footer ul {
   color: rgb(172, 107, 107);
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 0em;
 }
 footer ul li h2 {
   font-size: 1em;
