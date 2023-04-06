@@ -10,12 +10,23 @@ body {
   align-items: center;
   width: 100vw;
 }
-header span {
+.before-login {
+  display: flex;
+}
+.sign-in,
+.sign-up,
+.user-name,
+.log-out {
   font-size: large;
   font-weight: 500;
   color: white;
   cursor: pointer;
+  list-style: none;
 }
+.after-login {
+  display: none;
+}
+
 #cart {
   cursor: pointer;
 }
